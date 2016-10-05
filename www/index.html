@@ -99,10 +99,14 @@ $(document).ready(function() {
         });
 
         $('#ct'+timer_no).click(function() {
-            if ($(this).text()<7)
+            if ($(this).text()<7) {
                 $('#c'+$(this).text()).html('6:00');
-            else
+                c[$(this).text()]=TIMER_SET1;
+            }
+            else {
                 $('#c'+$(this).text()).html('3:00');
+                c[$(this).text()]=TIMER_SET2;   
+            }
             $('#c'+$(this).text()).removeClass('blink_me');
             $('#c'+$(this).text()).removeClass('timesup');     
         });

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <title>煮麵計時器</title>
+<style>
+.counter-title {
+    font-size:24px;
+}
+.counter pauseInterval {
+    font-size:48px;
+}
+.counter {
+    font-size:48px;
+    background:#c0c0c0;
+}
+.pauseInterval {
+    color: #0000ff;
+}
+.timesup {
+    background: #ff0000;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+</style>
+<script>
+function num2clock(counter) {
+    var clock;
+    if (counter<=0)
+        clock = '0:00'
+    else {
+        var minute = Math.floor(counter/60);
+        var second = counter % 60;
+        clock = second < 10 ? "" + minute + ":" + "0" + second : 
+                "" + minute + ":" + second;
+    }
+    return clock;
+}
+
+const TIMER_SET1 = 180;
+const TIMER_SET2 = 120;
+var audio = new Audio('nokiatone.mp3');
+var c=[0, TIMER_SET1,
+    TIMER_SET1,
+    TIMER_SET1,
+    TIMER_SET1,
+    TIMER_SET1,
+    TIMER_SET1,
+    TIMER_SET2,
+    TIMER_SET2,
+    TIMER_SET2
+];
+var timerInterval = function(timer_no) {
+    if(!$('#c'+timer_no).hasClass('pauseInterval')) {
+        c[timer_no]--;
+        $('#c'+timer_no).html(num2clock(c[timer_no]));
+        if(c[timer_no]<=0) {
+            $('#c'+timer_no).addClass('pauseInterval');
+            $('#c'+timer_no).addClass('timesup');
+            $('#c'+timer_no).addClass('blink_me');
+            audio.play();
+            if (timer_no<8)
+                c[timer_no]=TIMER_SET1;
+            else 
+                c[timer_no]=TIMER_SET2;
+
+        }
+    }
+}
+
+for(var timer_no=1; timer_no<=9; timer_no++) {
+    this.setInterval(timerInterval.bind(null,timer_no), 100);
+}
+
+$(document).ready(function() {
+    for(var timer_no=1; timer_no<=9; timer_no++) {
+        $('#c'+timer_no).click(function() {
+            if ($(this).hasClass('pauseInterval')) {
+                $(this).removeClass('pauseInterval');
+                $(this).removeClass('blink_me');
+                $(this).removeClass('timesup');     
+            }
+            else {
+                $(this).addClass('pauseInterval');
+            }
+        });
+
+        $('#ct'+timer_no).click(function() {
+            if ($(this).text()<8)
+                $('#c'+$(this).text()).html('3:00');
+            else
+                $('#c'+$(this).text()).html('2:00');
+            $('#c'+$(this).text()).removeClass('blink_me');
+            $('#c'+$(this).text()).removeClass('timesup');     
+        });
+    }
+});
+</script>
+</head>
+<body>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct1' class='counter-title'>1</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c1' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct2' class='counter-title'>2</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c2' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct3' class='counter-title'>3</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c3' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct4' class='counter-title'>4</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c4' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct5' class='counter-title'>5</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c5' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct6' class='counter-title'>6</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c6' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct7' class='counter-title'>7</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c7' class='counter pauseInterval'>3:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct8' class='counter-title'>8</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c8' class='counter pauseInterval'>2:00</span>
+                </div>
+            </div>
+        </div>
+        <div class='col-md-4 col-xs-4 col-sm-4'>
+            <div class='panel panel-primary'>
+                <div class='panel-heading' align='center'>
+                    <div id='ct9' class='counter-title'>9</div>
+                </div>
+                <div class='panel-body' align='center'>
+                    <span id='c9' class='counter pauseInterval'>2:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

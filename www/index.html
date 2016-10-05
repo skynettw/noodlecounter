@@ -3,16 +3,11 @@
 <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href='js/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='js/bootstrap/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <script src='js/jquery-2.2.4.min.js'></script>
+    <script src='js/bootstrap/js/bootstrap.min.js'></script>
     <title>煮麵計時器</title>
 <style>
 .counter-title {
@@ -57,7 +52,7 @@ function num2clock(counter) {
 
 const TIMER_SET1 = 180;
 const TIMER_SET2 = 120;
-var audio = new Audio('nokiatone.mp3');
+var audio = new Audio('audio/nokiatone.mp3');
 var c=[0, TIMER_SET1,
     TIMER_SET1,
     TIMER_SET1,

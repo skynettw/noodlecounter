@@ -50,8 +50,8 @@ function num2clock(counter) {
     return clock;
 }
 
-const TIMER_SET1 = 180;
-const TIMER_SET2 = 120;
+const TIMER_SET1 = 360;
+const TIMER_SET2 = 180;
 var audio = new Audio('audio/nokiatone.mp3');
 var c=[0, TIMER_SET1,
     TIMER_SET1,
@@ -72,7 +72,7 @@ var timerInterval = function(timer_no) {
             $('#c'+timer_no).addClass('timesup');
             $('#c'+timer_no).addClass('blink_me');
             audio.play();
-            if (timer_no<8)
+            if (timer_no<7)
                 c[timer_no]=TIMER_SET1;
             else 
                 c[timer_no]=TIMER_SET2;
@@ -99,10 +99,10 @@ $(document).ready(function() {
         });
 
         $('#ct'+timer_no).click(function() {
-            if ($(this).text()<8)
-                $('#c'+$(this).text()).html('3:00');
+            if ($(this).text()<7)
+                $('#c'+$(this).text()).html('6:00');
             else
-                $('#c'+$(this).text()).html('2:00');
+                $('#c'+$(this).text()).html('3:00');
             $('#c'+$(this).text()).removeClass('blink_me');
             $('#c'+$(this).text()).removeClass('timesup');     
         });
@@ -119,7 +119,7 @@ $(document).ready(function() {
                     <div id='ct1' class='counter-title'>1</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c1' class='counter pauseInterval'>3:00</span>
+                    <span id='c1' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@ $(document).ready(function() {
                     <div id='ct2' class='counter-title'>2</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c2' class='counter pauseInterval'>3:00</span>
+                    <span id='c2' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@ $(document).ready(function() {
                     <div id='ct3' class='counter-title'>3</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c3' class='counter pauseInterval'>3:00</span>
+                    <span id='c3' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -151,7 +151,7 @@ $(document).ready(function() {
                     <div id='ct4' class='counter-title'>4</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c4' class='counter pauseInterval'>3:00</span>
+                    <span id='c4' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@ $(document).ready(function() {
                     <div id='ct5' class='counter-title'>5</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c5' class='counter pauseInterval'>3:00</span>
+                    <span id='c5' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -171,7 +171,7 @@ $(document).ready(function() {
                     <div id='ct6' class='counter-title'>6</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c6' class='counter pauseInterval'>3:00</span>
+                    <span id='c6' class='counter pauseInterval'>6:00</span>
                 </div>
             </div>
         </div>
@@ -193,7 +193,7 @@ $(document).ready(function() {
                     <div id='ct8' class='counter-title'>8</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c8' class='counter pauseInterval'>2:00</span>
+                    <span id='c8' class='counter pauseInterval'>3:00</span>
                 </div>
             </div>
         </div>
@@ -203,7 +203,7 @@ $(document).ready(function() {
                     <div id='ct9' class='counter-title'>9</div>
                 </div>
                 <div class='panel-body' align='center'>
-                    <span id='c9' class='counter pauseInterval'>2:00</span>
+                    <span id='c9' class='counter pauseInterval'>3:00</span>
                 </div>
             </div>
         </div>

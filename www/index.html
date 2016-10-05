@@ -82,7 +82,7 @@ var timerInterval = function(timer_no) {
 }
 
 for(var timer_no=1; timer_no<=9; timer_no++) {
-    this.setInterval(timerInterval.bind(null,timer_no), 100);
+    this.setInterval(timerInterval.bind(null,timer_no), 1000);
 }
 
 $(document).ready(function() {

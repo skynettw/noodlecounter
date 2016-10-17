@@ -53,7 +53,10 @@ function num2clock(counter) {
 const TIMER_SET1 = 360;
 const TIMER_SET2 = 180;
 //var audio = new Audio('audio/nokiatone.mp3');
-var media = new Media('audio/nokiatone.mp3');
+var media = new Media('/audio/nokiatone.mp3',
+    function() {
+        console.log('play successful');
+    });
 var c=[0, TIMER_SET1,
     TIMER_SET1,
     TIMER_SET1,

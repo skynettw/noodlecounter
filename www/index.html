@@ -52,7 +52,8 @@ function num2clock(counter) {
 
 const TIMER_SET1 = 360;
 const TIMER_SET2 = 180;
-var audio = new Audio('audio/nokiatone.mp3');
+//var audio = new Audio('audio/nokiatone.mp3');
+var media = new Media('audio/nokiatone.mp3');
 var c=[0, TIMER_SET1,
     TIMER_SET1,
     TIMER_SET1,
@@ -71,7 +72,7 @@ var timerInterval = function(timer_no) {
             $('#c'+timer_no).addClass('pauseInterval');
             $('#c'+timer_no).addClass('timesup');
             $('#c'+timer_no).addClass('blink_me');
-            audio.play();
+            media.play();
             if (timer_no<7)
                 c[timer_no]=TIMER_SET1;
             else 
